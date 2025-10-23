@@ -136,7 +136,7 @@ export const updateMedicalHistory = async (req, res) => {
     if (!email || !record) {
       return res.status(400).json({ message: "Email and record are required." });
     }
-    const formattedRecord = ` ${record.trim()} | ${new Date().toLocaleString()} |`;
+    const formattedRecord = ` ${record.trim()} | ${new Date().toLocaleString()} | \n\n`;
 
     const updatedPatient = await patient.findOneAndUpdate(
       { email },

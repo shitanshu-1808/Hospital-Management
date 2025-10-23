@@ -67,14 +67,16 @@ const UpdateMedicalHistory = () => {
         </form>
 
         {message && (
-          <p
-            className={`umh-message ${
-              message.startsWith("✅") ? "success" : "error"
-            }`}
-          >
-            {message}
-          </p>
-        )}
+  <p
+    className={`umh-message ${
+      message.includes("✅") ? "success" :
+      message.includes("❌") ? "error" : ""
+    }`}
+  >
+    {message}
+  </p>
+)}
+
       </div>
     </div>
   );

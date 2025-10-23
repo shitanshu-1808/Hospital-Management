@@ -28,6 +28,8 @@ body{
   -moz-osx-font-smoothing:grayscale;
   padding:32px;
   color:#243238;
+  white-space: pre-line;
+
 }
 
 .card,
@@ -299,7 +301,7 @@ body{
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* === Page Layout === */
+
 .umh-page {
   min-height: 100vh;
   display: flex;
@@ -311,7 +313,7 @@ body{
   padding: 32px;
 }
 
-/* === Card Container === */
+
 .umh-card {
   width: 100%;
   max-width: var(--max-width);
@@ -322,7 +324,7 @@ body{
   animation: fadeIn 0.45s ease both;
 }
 
-/* === Title === */
+
 .umh-title {
   color: var(--accent);
   font-weight: 600;
@@ -332,14 +334,14 @@ body{
   letter-spacing: 0.3px;
 }
 
-/* === Form === */
+
 .umh-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* === Inputs === */
+
 .umh-input,
 .umh-textarea {
   width: 100%;
@@ -360,13 +362,13 @@ body{
   transform: translateY(-1px);
 }
 
-/* === Textarea === */
+
 .umh-textarea {
   min-height: 100px;
   resize: vertical;
 }
 
-/* === Button === */
+
 .umh-button {
   width: 100%;
   padding: 12px 14px;
@@ -435,9 +437,33 @@ body{
   }
 }
 
-/* === Mobile Responsive === */
+
 @media (max-width: 700px) {
   .umh-card {
     padding: 20px;
   }
 }
+
+.umh-message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  white-space: pre-line; 
+}
+
+.umh-message.success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.umh-message.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+
+
