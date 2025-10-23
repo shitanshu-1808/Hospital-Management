@@ -30,7 +30,9 @@ A full-stack hospital management application built with **React**, **Node.js**, 
 - **Styling**: CSS (Custom styles and gradients)
 
 
+## ⚙️ Installation & Setup
 
-
-git clone https://github.com/your-username/hospital-management.git
+### 1. Clone the repository
+```bash
+git clone https://github.com/shitanshu-1808/hospital-management.git
 cd hospital-management
