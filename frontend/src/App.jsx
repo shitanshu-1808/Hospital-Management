@@ -5,6 +5,7 @@ import RegisterPatient from "./pages/registerPatient"
 import PatientLogin from "./pages/loginPatient"
 import Navbar from "./components/navbar"
 import Footer from "./components/footer"
+import UpdateMedicalHistory from "./pages/medicalHistory"
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
     <Navbar></Navbar>
     <main>
       <Routes>
+        <Route path="/update-medical-history" element={<UpdateMedicalHistory/>} />
         <Route path="/register-doctor" element={<DoctorRegister />} />
         <Route path="/login-doctor" element={<DoctorLogin />} />
         <Route path="/register-patient" element={<RegisterPatient />} />

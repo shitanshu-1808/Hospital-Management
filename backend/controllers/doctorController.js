@@ -129,23 +129,28 @@ export const registerPatient = async (req, res) => {
 
 //update patient medical records
 
-export const updateMedicalHistory = async(req,res)=>{
-    try {
-        const {record}=req.body
+export const updateMedicalHistory = async (req, res) => {
+  try {
+    const { email, record } = req.body;
 
-    const findPatient = await patient.findByIdAndUpdate(
-  req.params.id,
-  { $push: { medicalHistory: record } },
-  { new: true }  
-);
+    if (!email || !record) {
+      return res.status(400).json({ message: "Email and record are required." });
+    }
+    const formattedRecord = ` ${record.trim()} | ${new Date().toLocaleString()} |`;
 
+    const updatedPatient = await patient.findOneAndUpdate(
+      { email },
+      { $push: { medicalHistory: formattedRecord } },
+      { new: true }
+    );
 
-    if(!findPatient){
-        return res.status(400).json({message:"cannot find a patient"})
+    if (!updatedPatient) {
+      return res.status(404).json({ message: "Cannot find a patient." });
     }
 
-    res.status(200).json({message:"medical history updated successfully"})
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+    res.status(200).json({ message: "Medical history updated successfully" });
+  } catch (error) {
+    console.error("Error updating medical history:", error);
+    res.status(500).json({ message: error.message });
+  }
+};

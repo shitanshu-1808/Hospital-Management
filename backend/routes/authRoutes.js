@@ -9,7 +9,7 @@ const router = express.Router()
 router.post("/registerDoctor",registerDoctor);
 router.post("/loginDoctor",loginDoctor);
 router.post("/registerPatient",verifyToken,registerPatient);
-router.put("/updateMedicalHistory/:id",verifyToken,updateMedicalHistory);
+router.put("/updateMedicalHistory",verifyToken,updateMedicalHistory);
 
 
 router.post("/patientLogin",patientLogin);
