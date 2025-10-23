@@ -1,5 +1,5 @@
 import doctor from "../models/doctor.js";
-import user from "../models/user.js";
+
 import department from "../models/department.js";
 import patient from "../models/patient.js";
 import bcrypt from 'bcrypt'
@@ -13,35 +13,24 @@ dotenv.config()
 export const registerDoctor = async (req, res) => {
     try {
         const { name, email, password, role, specialization, experience, phone, availability,departName,description } = req.body;
-        const existingUser = await user.findOne({ email });
+        const existingUser = await doctor.findOne({ email });
 
         if (existingUser) {
             return res.status(400).json({ message: "User already exists" })
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        const imageUrl = req.file.path
-        if(imageUrl){
-            console.log("yeeee")
-        }else{
-            console.log("lol")
-        }
-
-        const User = await user.create({
-            name,
-            email,
-            password: hashedPassword,
-            role,
-            profileImage: imageUrl
-
-        })
+        
         const Department = await department.create({
             departName,
             description
         })
         await doctor.create({
-            userId: User._id,
+            name,
+            email,
+            password: hashedPassword,
+            role,
+           
             department:Department._id,
             specialization,
             experience,
@@ -63,7 +52,7 @@ export const registerDoctor = async (req, res) => {
 export const loginDoctor = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const existingUser = await user.findOne({ email });
+        const existingUser = await doctor.findOne({ email });
 
         if (!existingUser) {
             return res.status(400).json({ message: "User doesnot exist" })
@@ -94,13 +83,13 @@ export const loginDoctor = async (req, res) => {
 export const registerPatient = async (req, res) => {
     try {
         const { name, email, password, role,refferedDoctorName,refferedDoctorEmailId,age,gender, bloodGroup,phone,address,medicalHistory } = req.body;
-        const existingPatient = await user.findOne({ email });
+        const existingPatient = await patient.findOne({ email });
 
         if (existingPatient) {
             return res.status(400).json({ message: "User already exists" })
         }
 
-        const doctorReffered = await user.findOne({email:refferedDoctorEmailId}) ;
+        const doctorReffered = await doctor.findOne({email:refferedDoctorEmailId}) ;
 
         if(!doctorReffered||doctorReffered.role!=="doctor"){
             return res.status(400).json({ message: "Doctor does not exist" })
@@ -110,16 +99,13 @@ export const registerPatient = async (req, res) => {
 
         const imageUrl = req.file ? req.file.path : null
 
-        const Patient = await user.create({
+       
+        const patientdet = await patient.create({
             name,
             email,
             password: hashedPassword,
             role,
-            profileImage: imageUrl
-
-        })
-        const patientdet = await patient.create({
-            userId:Patient._id,
+            
             refferedDoctorName,
             refferedDoctorEmailId,
             age,

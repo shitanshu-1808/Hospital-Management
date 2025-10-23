@@ -1,10 +1,13 @@
 import React from "react";
 
-function Footer(){
+const Footer = () => {
+  return (
+    <footer className="footer"
+      
+    >
+      &copy; 2025 Hospital Management and Patient record system | All rights reserved.
+    </footer>
+  );
+};
 
-    return(
-        <div className="dad">footer</div>
-    )
-}
-
-export default Footer
+export default Footer;

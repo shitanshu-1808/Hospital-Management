@@ -1,23 +1,27 @@
-import Footer from "./components/footer.jsx"
-import Navbar from "./components/navbar.jsx"
-import PatientLogin from './pages/patientLogin.jsx'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
+import DoctorRegister from "./pages/registerDoctor"
+import DoctorLogin from "./pages/loginDoctor"
+import { Route ,Routes} from "react-router-dom"
+import RegisterPatient from "./pages/registerPatient"
+import PatientLogin from "./pages/loginPatient"
+import Navbar from "./components/navbar"
+import Footer from "./components/footer"
 
 function App() {
   
 
   return (
     <>
-      <Navbar></Navbar>
-      <main>
-        <Routes>
-        <Route path="/" element={<PatientLogin />} />
-        
+    <Navbar></Navbar>
+    <main>
+      <Routes>
+        <Route path="/register-doctor" element={<DoctorRegister />} />
+        <Route path="/login-doctor" element={<DoctorLogin />} />
+        <Route path="/register-patient" element={<RegisterPatient />} />
+        <Route path="/" element={<PatientLogin/>} />
       </Routes>
-      </main>
-      <Footer></Footer>
+    </main>
+    <Footer></Footer>
+
     </>
   )
 }

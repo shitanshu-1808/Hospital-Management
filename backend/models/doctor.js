@@ -1,9 +1,28 @@
 import mongoose from "mongoose";
 
 const doctorSchema = new mongoose.Schema({
-    userId:{
-       type: mongoose.Schema.Types.ObjectId,ref:"User",
-       required:true
+     name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        unique:true,
+        lowercase:true,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true,
+       
+    },
+    role:{
+        type:String,
+        enum:["doctor","patient"],
+        default:"patient"
+    },
+    profileImage:{
+        type:String
     },
     specialization: {
          type: String, 
@@ -20,12 +39,12 @@ const doctorSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    availability:[{
-      day: String, 
-      startTime: String,
-      endTime: String
+    availability:{
+      type:String,
+      required:true
+
     }
-  ],
+  ,
 },{timestamps:true})
 
 export default mongoose.model("Doctor",doctorSchema);
