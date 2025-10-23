@@ -17,6 +17,7 @@ const Navbar = () => {
         <nav className="site-nav">
           <div className="nav-brand">Navigation</div>
           <div className="nav-links">
+            <Link to="/update-medical-history" className="nav-link">Update Patient Details </Link>
             <Link to="/" className="nav-link">PatientDetails</Link>
             <Link to="/register-patient" className="nav-link">RegisterPatient</Link>
            
