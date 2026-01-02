@@ -31,18 +31,19 @@ A full-stack hospital management application built with **React**, **Node.js**, 
 
 
 ## ⚙️ Installation & Setup
+ Clone the repository
 
-### 1. Clone the repository
-```bash
 https://github.com/shitanshu-1808/Hospital-Management.git
 cd Hospital-Management
 
-cd client
+cd backend
 npm install
+npm nodemon server.js
 
 
-cd ../server
+cd frontend
 npm install
+npm run dev
 
 
 
